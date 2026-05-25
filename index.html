@@ -2,326 +2,473 @@
 <html lang="en">
 
 <head>
-    <title>Personal Portfolio - Ruikang Lin</title>
+    <title>Ruikang Lin | Software Engineer</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://ruikanglin.com/">
     <link rel="apple-touch-icon" sizes="180x180" href="./resources/favicons/apple-touch-icon.png?v=2">
     <link rel="icon" type="image/png" sizes="32x32" href="./resources/favicons/favicon-32x32.png?v=2">
     <link rel="icon" type="image/png" sizes="16x16" href="./resources/favicons/favicon-16x16.png?v=2">
     <link rel="manifest" href="./resources/favicons/site.webmanifest">
-    <!-- Search Result - Site Name -->
+    <!-- Structured data -->
     <script type="application/ld+json">
         {
-          "@context" : "https://schema.org/",
-          "@type" : "WebSite",
-          "name" : "Ruikang Lin",
-          "url" : "https://ruikanglin.com/"
+          "@context": "https://schema.org/",
+          "@type": "Person",
+          "name": "Ruikang Lin",
+          "jobTitle": "Software Engineer",
+          "url": "https://ruikanglin.com/",
+          "sameAs": [
+            "https://github.com/RuikangLin",
+            "https://www.linkedin.com/in/ruikanglin/"
+          ],
+          "alumniOf": {
+            "@type": "CollegeOrUniversity",
+            "name": "Rensselaer Polytechnic Institute"
+          }
         }
     </script>
-    <!-- Search Result - Description -->
-    <meta name="description"
-        content="Hi! I'm Ruikang Lin. Click to learn more about me, my projects, and my achievements.">
-    <!-- tailwindCSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <!-- flowbite -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.css" rel="stylesheet">
-    <!-- Google Font: Oswald -->
+    <!-- Primary meta -->
+    <meta name="description" content="Ruikang Lin is a Software Engineer and recent RPI graduate specializing in data pipelines, automation, and full-stack development. Open to full-time roles.">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://ruikanglin.com/">
+    <meta property="og:title" content="Ruikang Lin | Software Engineer">
+    <meta property="og:description" content="Software Engineer and recent RPI graduate specializing in data pipelines, automation, and full-stack development. Open to full-time roles.">
+    <meta property="og:image" content="https://ruikanglin.com/resources/images/profile-clean.png">
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Ruikang Lin | Software Engineer">
+    <meta name="twitter:description" content="Software Engineer and recent RPI graduate specializing in data pipelines, automation, and full-stack development. Open to full-time roles.">
+    <meta name="twitter:image" content="https://ruikanglin.com/resources/images/profile-clean.png">
+    <!-- JetBrains Mono -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@200..700&display=swap" rel="stylesheet">
-    <link href="./resources/styles/oswald.css" rel="stylesheet">
-    <!-- Custom CSS Override-->
-    <link href="./resources/styles/index.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        /* ── Terminal theme tokens ── */
+        :root {
+            --rs-bg:        #F4F6F8;
+            --rs-fg:        #0F0F10;
+            --rs-fg-2:      #2A2A2B;
+            --rs-fg-3:      #5B5852;
+            --rs-fg-muted:  #8B877C;
+            --rs-border:    #E0DED4;
+            --rs-tile-bg:   #EDEBE2;
+            --rs-accent:    #4A90E2;
+            --rs-link:      #3576C7;
+            --rs-dot-bg:    #D9E8FB;
+            --rs-dot-fg:    #1E5BB3;
+        }
+
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            background: var(--rs-bg);
+            color: var(--rs-fg);
+            font-family: 'JetBrains Mono', ui-monospace, Menlo, monospace;
+            min-height: 100vh;
+        }
+
+        .page-wrap {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 32px 96px;
+        }
+
+        /* ── Profile ring gradient animation ── */
+        @keyframes rlGradient {
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .profile-ring {
+            width: 200px;
+            height: 200px;
+            flex-shrink: 0;
+            border-radius: 50%;
+            padding: 6px;
+            background: linear-gradient(to top right, #4A90E2, #F4F6F8);
+            background-size: 300% 100%;
+            animation: rlGradient 8s ease infinite;
+            filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04))
+                    drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+        }
+
+        .profile-ring img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* ── Icon buttons ── */
+        .icon-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 9999px;
+            color: white;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 150ms;
+            text-decoration: none;
+        }
+        .icon-btn:hover { opacity: 0.9; }
+
+        /* ── Section chrome ── */
+        .section-rule {
+            border: none;
+            border-top: 1px solid var(--rs-border);
+            margin-bottom: 32px;
+        }
+
+        .eyebrow {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.16em;
+            color: var(--rs-fg-muted);
+            text-transform: uppercase;
+            margin-bottom: 4px;
+        }
+
+        /* ── Timeline ── */
+        .timeline {
+            position: relative;
+        }
+
+        /* single continuous rail */
+        .timeline::before {
+            content: "";
+            position: absolute;
+            top: 36px;
+            bottom: 36px;
+            /* rail center = 160px (date col) + 20px (gap) + 16px (half of 32px rail col) = 196 */
+            left: 196px;
+            transform: translateX(-50%);
+            width: 1px;
+            background: var(--rs-border);
+            pointer-events: none;
+        }
+
+        .timeline-entry {
+            display: grid;
+            grid-template-columns: 160px 32px 96px 1fr;
+            column-gap: 20px;
+            align-items: start;
+            padding-bottom: 36px;
+        }
+        .timeline-entry:last-child { padding-bottom: 0; }
+
+        .timeline-date {
+            font-size: 18px;
+            font-weight: 500;
+            color: var(--rs-accent);
+            letter-spacing: 0.16em;
+            white-space: nowrap;
+            padding-top: 34px;
+            line-height: 1;
+            text-align: right;
+        }
+
+        .timeline-rail {
+            position: relative;
+            min-height: 96px;
+        }
+
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            top: 36px;
+            transform: translate(-50%, 0);
+            width: 14px;
+            height: 14px;
+            border-radius: 9999px;
+            background: var(--rs-accent);
+            box-shadow: 0 0 0 6px var(--rs-bg);
+        }
+
+        .timeline-tile {
+            width: 96px;
+            height: 96px;
+            border-radius: 8px;
+            background: #ffffff;
+            border: 1px solid var(--rs-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            color: var(--rs-fg-3);
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 0.04em;
+            text-align: center;
+        }
+
+        .timeline-content { padding-top: 4px; }
+
+        .timeline-content h3 {
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--rs-fg);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 8px;
+            line-height: 1.3;
+        }
+
+        .timeline-content .tl-org {
+            margin-top: 4px;
+            font-size: 15px;
+            font-weight: 500;
+            color: var(--rs-fg-2);
+        }
+
+        .timeline-content .tl-desc {
+            margin-top: 8px;
+            font-size: 15px;
+            line-height: 1.6;
+            color: var(--rs-fg-3);
+        }
+
+        /* ── Badge ── */
+        .badge {
+            font-size: 12px;
+            font-weight: 500;
+            padding: 1px 10px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+        .badge-latest  { background: #D9E8FB; color: #3576C7; border: 1px solid #B5D2F4; }
+        .badge-ongoing { background: #DCFCE7; color: #166534; border: 1px solid #4ADE80; }
+        .badge-paused  { background: #EDEBE2; color: #2A2A2B; border: 1px solid #5B5852; }
+
+        /* ── Body / Bio text ── */
+        .body-text {
+            font-size: 17px;
+            line-height: 1.7;
+            color: var(--rs-fg-2);
+            margin-top: 16px;
+            max-width: 720px;
+        }
+
+        /* ── Misc list ── */
+        .misc-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 16px;
+        }
+        .misc-list li { font-size: 15px; color: var(--rs-fg-2); line-height: 1.7; }
+        .misc-list a {
+            color: var(--rs-link);
+            text-decoration: none;
+            border-bottom: 1px solid var(--rs-border);
+        }
+        .misc-list a:hover { border-bottom-color: var(--rs-link); }
+
+        /* ── Footer ── */
+        .site-footer {
+            border-top: 1px solid var(--rs-border);
+            margin-top: 40px;
+            padding-top: 24px;
+            font-size: 13px;
+            color: var(--rs-fg-muted);
+            text-align: center;
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 700px) {
+            .page-wrap { padding: 0 20px 64px; }
+
+            .hero-inner {
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                gap: 20px !important;
+            }
+            .hero-inner > div { align-items: center !important; }
+            .profile-ring { width: 110px; height: 110px; }
+            .hero-name  { font-size: 44px !important; }
+            .hero-tag   { font-size: 16px !important; max-width: 100% !important; }
+
+            .timeline::before { display: none; }
+
+            .timeline-entry {
+                grid-template-columns: auto 1fr;
+                grid-template-rows: auto auto;
+                column-gap: 12px;
+                row-gap: 8px;
+                padding-bottom: 28px;
+            }
+
+            .timeline-date {
+                grid-column: 1;
+                grid-row: 1;
+                font-size: 13px;
+                padding-top: 0;
+                text-align: left;
+                letter-spacing: 0.08em;
+            }
+
+            .timeline-rail { display: none; }
+
+            .timeline-tile {
+                grid-column: 1;
+                grid-row: 2;
+                width: 56px;
+                height: 56px;
+                font-size: 9px;
+            }
+
+            .timeline-content {
+                grid-column: 2;
+                grid-row: 1 / 3;
+                padding-top: 0;
+            }
+
+            .timeline-content h3 { font-size: 16px; }
+            .timeline-content .tl-org  { font-size: 13px; }
+            .timeline-content .tl-desc { font-size: 13px; }
+        }
+    </style>
 </head>
 
-<body class="w-screen h-dvh bg-[#FCF6F5FF] overflow-x-hidden overflow-y-auto">
-    <div class="max-w-full h-full flex justify-center content-center overflow-y-auto">
-        <div class="absolute left-0 top-0 w-1/3 md:w-2/5 h-full bg-[#89ABE3FF] -z-10"></div>
-        <div class="grid grid-cols-2 gap-4 md:gap-6 items-center">
-            <div id="profile_card"
-                class="max-w-none md:max-w-sm h-fit bg-white border border-gray-200 rounded-r-lg md:rounded-lg shadow text-center">
-                <img id="profile_pic"
-                    class="rounded-full w-2/3 mx-auto mt-4 md:mt-12 bg-gradient-to-tr from-[#89ABE3FF] to-white drop-shadow-lg"
-                    src="./resources/images/profile-clean.png" alt="Profile Picture" />
-                <div class="p-2 md:p-5">
-                    <h5 class="text-2xl md:text-4xl font-bold tracking-wide text-gray-900">Ruikang</h5>
-                    <h5 class="text-2xl md:text-4xl font-bold tracking-wide text-gray-900">Lin</h5>
-                    <div class="my-4 w-full flex justify-center">
-                        <div class="border-b-8 border-[#89ABE3FF] w-1/3 md:w-1/6"></div>
-                    </div>
-                    <p class="text-lg md:text-2xl font-normal tracking-wide text-gray-700 underline-offset-2">CS & ITWS
-                        <a href="https://www.rpi.edu/" class="hover:underline"><b>@ RPI</b></a>
+<body>
+    <div class="page-wrap">
+
+        <!-- ═══════════════════════════════ HERO ═══════════════════════════════ -->
+        <header style="padding-top: 64px; padding-bottom: 24px; display: flex; justify-content: center;">
+            <div class="hero-inner" style="display: flex; flex-direction: row; align-items: center; gap: 36px;">
+                <div class="profile-ring">
+                    <img src="./resources/images/profile-clean.png" alt="Ruikang Lin" />
+                </div>
+                <div style="display: flex; flex-direction: column; align-items: flex-start; gap: 14px;">
+                    <h1 class="hero-name"
+                        style="font-size: 72px; font-weight: 700; color: var(--rs-fg); letter-spacing: -0.02em; line-height: 1;">
+                        Ruikang Lin
+                    </h1>
+                    <p class="hero-tag"
+                       style="font-size: 22px; font-weight: 400; color: var(--rs-fg-2); max-width: 480px; line-height: 1.4;">
+                        I like designing systems and building automations.
                     </p>
-                </div>
-                <div class="mb-4 md:mb-6">
-                    <button type="button" onclick="window.open('https://github.com/RuikangLin');"
-                        class="me-2 transition-all text-white bg-[#24292F] hover:bg-[#24292F]/90 shadow-md shadow-[#24292F]/50 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-full text-sm p-2 text-center inline-flex items-center">
-                        <svg class="w-6 h-6" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                            viewBox="0 0 20 20">
-                            <path fill-rule="evenodd"
-                                d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </button>
-                    <button type="button" onclick="window.open('https://www.linkedin.com/in/ruikanglin/');"
-                        class="transition-all text-white bg-[#0077B5] hover:bg-[#0077B5]/90 shadow-md shadow-[#0077B5]/50 focus:ring-4 focus:outline-none focus:ring-[#0077B5]/50 font-medium rounded-full text-sm p-2 text-center inline-flex items-center">
-                        <svg class="w-6 h-6 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                            <path
-                                d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-            <div class="md:h-auto overflow-y-auto items-center">
-                <h1
-                    class="text-5xl md:text-6xl font-extrabold tracking-wide md:tracking-widest text-gray-900 mt-24 md:m-0">
-                    Hi!</h1>
-                <h2 class="text-3xl md:text-5xl font-bold tracking-normal text-gray-900">I&#39;m Ruikang.</h2>
-                <h3 class="max-w-sm text-md md:text-2xl font-normal tracking-normal text-gray-900 my-2 md:my-6">Undergraduate &#39;26</h3>
-                <h3 class="max-w-sm text-md md:text-2xl font-normal tracking-normal text-gray-900 my-2 md:my-6">Open-Source Software Contributor</h3>
-                <div class="flex flex-col md:flex-row mb-24 sm:mb-6 ml-0 md:ml-4 mr-8 md:mr-0 gap-2 md:gap-6">
-                    <button type="button" id="view_work_btn"
-                        class="px-4 py-2.5 md:px-7 md:py-4 bg-[#3036c6] hover:bg-blue-800 font-medium rounded-full text-[#FCF6F5FF] text-sm text-center drop-shadow-lg"
-                        onclick="document.getElementById('portfolio').scrollIntoView({ behavior: 'smooth' });">
-                        VIEW MY WORK
-                    </button>
-                    <button type="button"
-                        class="px-4 py-2.5 md:px-7 md:py-4 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-full border border-gray-200 hover:bg-gray-100 hover:text-blue-700 drop-shadow-lg"
-                        onclick="window.open('https://www.linkedin.com/in/ruikanglin/');">
-                        CONTACT ME
-                    </button>
-                </div>
-                <div class="max-w-full md:max-w-sm me-2 hidden sm:block">
-                    <p class="mb-2 font-medium  ">Current Status:</p>
-                    <p class="mb-2">An IT Project Manager for Upstate Bicycle Works</p>
-                    <p>Seeking 2025 Spring Co-Ops / Summer Internships</p>
+                    <div style="display: flex; gap: 10px; margin-top: 4px;">
+                        <!-- GitHub -->
+                        <a href="https://github.com/RuikangLin" target="_blank" rel="noopener noreferrer"
+                           aria-label="GitHub" class="icon-btn"
+                           style="background: #24292F; box-shadow: 0 6px 10px -2px rgba(36,41,47,0.5);">
+                            <svg width="22" height="22" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
+                                <path fill-rule="evenodd" clip-rule="evenodd"
+                                    d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z" />
+                            </svg>
+                        </a>
+                        <!-- LinkedIn -->
+                        <a href="https://www.linkedin.com/in/ruikanglin/" target="_blank" rel="noopener noreferrer"
+                           aria-label="LinkedIn" class="icon-btn"
+                           style="background: #0077B5; box-shadow: 0 6px 10px -2px rgba(0,119,181,0.5);">
+                            <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
+        </header>
+
+        <!-- ══════════════════════════════ TIMELINE ═════════════════════════════ -->
+        <section style="padding-top: 40px; padding-bottom: 8px;">
+            <hr class="section-rule">
+            <div class="timeline">
+
+                <!-- Cathedral of All Saints Capstone -->
+                <article class="timeline-entry">
+                    <div class="timeline-date">Spring 2026</div>
+                    <div class="timeline-rail"><span class="timeline-dot"></span></div>
+                    <div class="timeline-tile">Cathedral of All Saints</div>
+                    <div class="timeline-content">
+                        <h3>Data &amp; Information Systems Analyst</h3>
+                        <p class="tl-org">Cathedral of All Saints · RPI IT Capstone</p>
+                        <p class="tl-desc">Designed a data management system using Google Workspace with a role-based access control model, built Zapier automation workflows to streamline administrative processes, and developed a content management system strategy for the organization's digital presence.</p>
+                    </div>
+                </article>
+
+                <!-- RPI Education -->
+                <article class="timeline-entry">
+                    <div class="timeline-date">2026</div>
+                    <div class="timeline-rail"><span class="timeline-dot"></span></div>
+                    <div class="timeline-tile"><img src="./resources/images/rensselaer_polytechnic_institute_logo.jpeg" alt="RPI" style="width: 100%; height: 100%; object-fit: cover; display: block;" /></div>
+                    <div class="timeline-content">
+                        <h3>B.S., Computer Science &amp; Information Technology and Web Sciences</h3>
+                        <p class="tl-org">Rensselaer Polytechnic Institute · 2022 - 2026</p>
+                        <p class="tl-desc">Contributed to four open-source projects at the Rensselaer Center for Open Source: a C++/Vulkan game engine, a Go/SolidJS tutoring platform, a Django course management system, and an iOS accessibility app. Coursework applied directly to real external clients: led an IT systems project for a local business and a UX research study for a nonprofit.</p>
+                    </div>
+                </article>
+
+                <!-- GE Vernova -->
+                <article class="timeline-entry">
+                    <div class="timeline-date">2025</div>
+                    <div class="timeline-rail"><span class="timeline-dot"></span></div>
+                    <div class="timeline-tile"><img src="./resources/images/gev_logo.png" alt="GE Vernova" style="width: 100%; height: 100%; object-fit: cover; display: block;" /></div>
+                    <div class="timeline-content">
+                        <h3>Data Analytics Intern</h3>
+                        <p class="tl-org">GE Vernova · Power Conversion and Storage</p>
+                        <p class="tl-desc">Worked across SAP, ServiceMax, and multiple AWS S3 databases, built Python tooling for data retrieval from customer SCADA systems, automating ETL pipelines with Prefect, and applied GenAI and Selenium for document processing and web automation.</p>
+                    </div>
+                </article>
+
+                <!-- ARoboticsCompany -->
+                <article class="timeline-entry">
+                    <div class="timeline-date">Summer 2022</div>
+                    <div class="timeline-rail"><span class="timeline-dot"></span></div>
+                    <div class="timeline-tile"><img src="./resources/images/arc_logo.jpeg" alt="ARoboticsCompany" style="width: 100%; height: 100%; object-fit: cover; display: block;" /></div>
+                    <div class="timeline-content">
+                        <h3>Intern</h3>
+                        <p class="tl-org">ARoboticsCompany</p>
+                        <p class="tl-desc">Converted mechanical prototype components to CAD using Fusion 360, assembled and maintained 3D printers, and contributed to prototype production through soldering and wiring.</p>
+                    </div>
+                </article>
+
+            </div>
+        </section>
+
+        <!-- ════════════════════════════════ BIO ════════════════════════════════ -->
+        <section style="padding-top: 40px; padding-bottom: 8px;">
+            <hr class="section-rule">
+            <h2 class="eyebrow">Bio</h2>
+            <p class="body-text">
+                I&#39;m a recent graduate at Rensselaer Polytechnic Institute with a dual major in
+                Computer Science and Information Technology &amp; Web Sciences. During my time there,
+                I have made multiple open-source software contributions at the Rensselaer Center
+                for Open Source and have worked with local businesses and nonprofits.
+            </p>
+            <p class="body-text">
+                After my junior year, I was a Data Analytics Intern for a year at GE Vernova that worked
+                on data pipelines, automation, and analytics for the Power Conversion and Storage team.
+            </p>
+        </section>
+
+        <!-- ═══════════════════════════════ MISC ════════════════════════════════ -->
+        <section style="padding-top: 40px; padding-bottom: 8px;">
+            <hr class="section-rule">
+            <h2 class="eyebrow">Misc</h2>
+            <ul class="misc-list">
+                <li><strong>Looking for:</strong> Full-time roles working with data and automation, ideally with a small team.</li>
+                <li><strong>Currently:</strong> Building an algorithmic trading system on paper trades and learning the Claude suite.</li>
+                <li><strong>Interests:</strong> Cooking, trying new restaurants (follow me on <a href="https://beliapp.co/app/ruikang" target="_blank" rel="noopener noreferrer">beli</a>), and working their ideas into my own cooking. I read broadly about tech and cognitive psychology.</li>
+                <li>Reach out and see the latest @ <a href="https://www.linkedin.com/in/ruikanglin/" target="_blank" rel="noopener noreferrer">linkedin.com/in/ruikanglin</a></li>
+            </ul>
+        </section>
+
+        <!-- ══════════════════════════════ FOOTER ═══════════════════════════════ -->
+        <footer class="site-footer">
+            Last updated May 2026. Heavily inspired by <a href="https://karpathy.ai/" target="_blank" rel="noopener noreferrer" style="color: inherit; border-bottom: 1px solid var(--rs-border);">Andrej Karpathy's personal website</a>.
+        </footer>
+
     </div>
-
-    <div id="portfolio" class="max-w-full sm:p-6 md:p-12">
-        <div class="md:flex md:flex-col md:items-center mb-6 md:mb-12 ml-1 sm:ml-0">
-            <h1 class="oswald text-[#89ABE3FF] font-normal mb-3">PORTFOLIO</h1>
-            <h2 class="oswald font-bold text-5xl">MY PORTFOLIO</h2>
-        </div>
-
-        <div class="flex justify-center mb-6 md:mb-12 border-gray-200">
-            <div class="relative flex flex-row -mb-px text-[8px] md:text-sm text-nowrap font-medium tracking-wide rounded-full bg-slate-200 shadow-md"
-                id="portfolio_tabs">
-                <span id="tab_indicator"
-                    class="absolute top-0 left-0 rounded-full h-full border-2 md:border-4 border-slate-200 overflow-hidden transition-all duration-300"></span>
-                <button class="tab_btn inline-block w-full p-3 md:p-5 z-10 rounded-s-full" type="button"
-                    aria-controls="schoolwork_panel">SCHOOLWORK</button>
-                <button class="tab_btn inline-block w-full p-3 md:p-5 z-10" type="button"
-                    aria-controls="opensource_panel">OPEN-SOURCE</button>
-                <button class="tab_btn inline-block w-full p-3 md:p-5 z-10 rounded-e-full" type="button"
-                    aria-controls="personal_panel"><span>PERSONAL</span></button>
-            </div>
-        </div>
-        <div id="portfolio_tab_panels" class="bg-[#E9BF97] py-0.5 sm:p-2 sm:rounded-lg">
-            <div id="personal_panel" class="tab_panel hidden p-4 m-2 sm:m-0 rounded-lg bg-gray-50 dark:bg-gray-800 flex justify-center"> 
-                <ul class="w-full sm:max-w-md divide-y divide-gray-200 dark:divide-gray-700">
-                    <li class="pb-3 sm:pb-4">
-                        <div class="flex items-center space-x-4 rtl:space-x-reverse">
-                            <div class="flex-1 min-w-0">
-                                <p class="text-lg font-medium text-gray-900 dark:text-white">
-                                    Computer Vision C++ Template
-                                </p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">
-                                    An easy-to-use C++ template for computer vision development using OpenCV library on MacOS.
-                                </p>
-                            </div>
-                            <div class="inline-flex items-center">
-                                <button type="button" onclick="window.open('https://github.com/RuikangLin/ComputerVisionTemplate');"
-                                class="transition-all text-white bg-[#24292F] hover:bg-[#24292F]/90 shadow-md shadow-[#24292F]/50 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-full text-sm p-2 text-center inline-flex items-center">
-                                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="py-3 sm:py-4">
-                        <div class="flex items-center space-x-2 rtl:space-x-reverse">
-                            <div class="flex-1 min-w-0">
-                                <p class="text-lg font-medium text-gray-900 dark:text-white">
-                                    RPI Campus Navigator<span class="bg-gray-100 text-gray-800 text-sm font-medium me-2 px-2 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300 border border-gray-500 ms-3">Paused</span>
-                                </p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">
-                                    A web application using Python, Plotly, and Pyscript to find the shortest path on the RPI campus.
-                                </p>
-                            </div>
-                            <div class="inline-flex items-center">
-                                <button type="button" onclick="window.open('https://github.com/RuikangLin/RPI-Campus-Map');"
-                                class="transition-all text-white bg-[#24292F] hover:bg-[#24292F]/90 shadow-md shadow-[#24292F]/50 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-full text-sm p-2 text-center inline-flex items-center">
-                                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                    <li class="pt-3 pb-0 sm:pt-4">
-                        <div class="flex items-center space-x-4 rtl:space-x-reverse">
-                            <div class="flex-1 min-w-0">
-                                <p class="text-lg font-medium text-gray-900 dark:text-white">
-                                    This Portfolio Website!<span class="bg-green-100 text-green-800 text-sm font-medium me-2 px-2 py-0.5 rounded dark:bg-green-900 dark:text-green-300 border border-green-400 ms-3">Ongoing</span>
-                                </p>
-                                <p class="text-sm text-gray-500 dark:text-gray-400">
-                                    My portfolio website hosted on GitHub Pages including Search Engine Optimization methods.
-                                </p>
-                            </div>
-                            <div class="inline-flex items-center">
-                                <button type="button" onclick="window.open('https://github.com/RuikangLin/ruikanglin.github.io');"
-                                class="transition-all text-white bg-[#24292F] hover:bg-[#24292F]/90 shadow-md shadow-[#24292F]/50 focus:ring-4 focus:outline-none focus:ring-[#24292F]/50 font-medium rounded-full text-sm p-2 text-center inline-flex items-center">
-                                    <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor"
-                                        viewBox="0 0 20 20">
-                                        <path fill-rule="evenodd"
-                                            d="M10 .333A9.911 9.911 0 0 0 6.866 19.65c.5.092.678-.215.678-.477 0-.237-.01-1.017-.014-1.845-2.757.6-3.338-1.169-3.338-1.169a2.627 2.627 0 0 0-1.1-1.451c-.9-.615.07-.6.07-.6a2.084 2.084 0 0 1 1.518 1.021 2.11 2.11 0 0 0 2.884.823c.044-.503.268-.973.63-1.325-2.2-.25-4.516-1.1-4.516-4.9A3.832 3.832 0 0 1 4.7 7.068a3.56 3.56 0 0 1 .095-2.623s.832-.266 2.726 1.016a9.409 9.409 0 0 1 4.962 0c1.89-1.282 2.717-1.016 2.717-1.016.366.83.402 1.768.1 2.623a3.827 3.827 0 0 1 1.02 2.659c0 3.807-2.319 4.644-4.525 4.889a2.366 2.366 0 0 1 .673 1.834c0 1.326-.012 2.394-.012 2.72 0 .263.18.572.681.475A9.911 9.911 0 0 0 10 .333Z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-            </div>
-            <div id="opensource_panel" class="tab_panel hidden p-4 m-2 sm:m-0 rounded-lg bg-gray-50 dark:bg-gray-800">
-                <ol class="relative border-s border-gray-200 dark:border-gray-700 ml-4">                  
-                    <li class="mb-10 ms-6">            
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-gray-50 dark:ring-gray-800 dark:bg-blue-900">
-                            <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                            </svg>
-                        </span>
-                        <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">Avant-Garde<span class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 ms-3">Latest</span></h3>
-                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Fall 2024</time>
-                        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Project Lead & Game Dev - Rensselaer Center for Open Source</p>
-                    </li>
-                    <li class="mb-10 ms-6">            
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-gray-50 dark:ring-gray-800 dark:bg-blue-900">
-                            <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                            </svg>
-                        </span>
-                        <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">Tutorfi</h3>
-                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Summer 2024</time>
-                        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Full-Stack Dev - Rensselaer Center for Open Source</p>
-                    </li>
-                    <li class="mb-10 ms-6">            
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-gray-50 dark:ring-gray-800 dark:bg-blue-900">
-                            <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                            </svg>
-                        </span>
-                        <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">ACMAS</h3>
-                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Fall 2023</time>
-                        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">UI/UX Design & Front-End Dev - Rensselaer Center for Open Source</p>
-                    </li>
-                    <li class="ms-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-gray-50 dark:ring-gray-800 dark:bg-blue-900">
-                            <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                            </svg>
-                        </span>
-                        <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Soundscape</h3>
-                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Spring 2023</time>
-                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">Swift Documentation & Front-End Dev - Rensselaer Center for Open Sources</p>
-                    </li>
-                </ol>
-            </div>
-            <div id="schoolwork_panel" class="tab_panel p-4 m-2 sm:m-0 rounded-lg bg-gray-50 dark:bg-gray-800">
-                <ol class="relative border-s border-gray-200 dark:border-gray-700 ml-4">                  
-                    <li class="mb-10 ms-6">            
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-gray-50 dark:ring-gray-800 dark:bg-blue-900">
-                            <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                            </svg>
-                        </span>
-                        <h3 class="flex items-center mb-1 text-lg font-semibold text-gray-900 dark:text-white">IT Project Manager<span class="bg-blue-100 text-blue-800 text-sm font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300 ms-3">Latest</span></h3>
-                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Fall 2024</time>
-                        <p class="mb-4 text-base font-normal text-gray-500 dark:text-gray-400">Customer Portal for Upstate Bicycle Works - IT Resource Management</p>
-                    </li>
-                    <li class="mb-10 ms-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-gray-50 dark:ring-gray-800 dark:bg-blue-900">
-                            <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                            </svg>
-                        </span>
-                        <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">CPU Scheduling Simulation, Wordle Game Replicate</h3>
-                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Summer 2024</time>
-                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">CPU Scheduling Simulation - Operating Systems</p>
-                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">Wordle Game - Operating Systems</p>
-                    </li>
-                    <li class="mb-10 ms-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-gray-50 dark:ring-gray-800 dark:bg-blue-900">
-                            <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                            </svg>
-                        </span>
-                        <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">RPI Campus Navigator, Full-Stack Dev & Data Analyst</h3>
-                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Spring 2024</time>
-                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">RPI Campus Navigator - Principles of Software</p>
-                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">The Runway - Web Development 2</p>
-                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">UX Study on the Wetland Trust - Intro to HCI</p>
-                        <a href="https://docs.google.com/presentation/d/1Q-Db9oJ638dDz1GiWDT8yRW900QCsEw6cFMxXZ0BtEo/edit?usp=sharing" target="_blank" rel="noopener noreferrer" class="mt-2 inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-lg hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:outline-none focus:ring-gray-100 focus:text-blue-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700 dark:focus:ring-gray-700"><svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-5 h-5 me-2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 14.25v-2.625a3.375 3.375 0 0 0-3.375-3.375h-1.5A1.125 1.125 0 0 1 13.5 7.125v-1.5a3.375 3.375 0 0 0-3.375-3.375H8.25m2.25 0H5.625c-.621 0-1.125.504-1.125 1.125v17.25c0 .621.504 1.125 1.125 1.125h12.75c.621 0 1.125-.504 1.125-1.125V11.25a9 9 0 0 0-9-9Z" />
-                          </svg>
-                           UX Study Link</a>
-                    </li>
-                    <li class="mb-10 ms-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-gray-50 dark:ring-gray-800 dark:bg-blue-900">
-                            <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                            </svg>
-                        </span>
-                        <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Full-Stack Dev</h3>
-                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Fall 2023</time>
-                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">ParkPulse - Web Development 1</p>
-                    </li>
-                    <li class="mb-10 ms-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-gray-50 dark:ring-gray-800 dark:bg-blue-900">
-                            <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                            </svg>
-                        </span>
-                        <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">CPU Logic Simulation</h3>
-                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Spring 2023</time>
-                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">CPU Logic Simulation - Computer Organization</p>
-                    </li>
-                    <li class="ms-6">
-                        <span class="absolute flex items-center justify-center w-6 h-6 bg-blue-100 rounded-full -start-3 ring-8 ring-gray-50 dark:ring-gray-800 dark:bg-blue-900">
-                            <svg class="w-2.5 h-2.5 text-blue-800 dark:text-blue-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M20 4a2 2 0 0 0-2-2h-2V1a1 1 0 0 0-2 0v1h-3V1a1 1 0 0 0-2 0v1H6V1a1 1 0 0 0-2 0v1H2a2 2 0 0 0-2 2v2h20V4ZM0 18a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8H0v10Zm5-8h10a1 1 0 0 1 0 2H5a1 1 0 0 1 0-2Z"/>
-                            </svg>
-                        </span>
-                        <h3 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Flow Bridge Game Solver</h3>
-                        <time class="block mb-2 text-sm font-normal leading-none text-gray-400 dark:text-gray-500">Fall 2022</time>
-                        <p class="text-base font-normal text-gray-500 dark:text-gray-400">Flow Bridge Game Solver - Data Structures</p>
-                    </li>
-                </ol>
-            </div>
-        </div>
-    </div>
-
-    <!-- <div id="expertise" class="max-w-full">
-        <h1 class="text-[#89ABE3FF] font-medium">EXPERTISE</h1>
-    </div> -->
-
-    <!-- flowbite -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/flowbite/2.2.1/flowbite.min.js"></script>
-    <!-- Custom Javascript-->
-    <script src="./resources/scripts/index.js"></script>
-    <script>
-        document.title = "Welcome - Ruikang's Portfolio Website";
-    </script>
 </body>
 
 </html>
